@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+mkdir -p /app
+git clone -b devel --recursive http://git.codelabs.ch/git/muen/mugenhwcfg.git /app/mugenhwcfg
+git clone git://github.com/ozgunawesome/devmem-full-access /app/devmem-full-access
+cat <<EOM >/app/runme.sh
+#!/bin/sh
+set -xe
+(cd /app/devmem-full-access && make)
+modprobe msr
+insmod /app/devmem-full-access/devmem-full-access.ko
+cd /app/mugenhwcfg
+./mugenhwcfg.py
+EOM
+chmod +x /app/runme.sh
+chown -R 1000:1000 /app
