@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ ! -f /home/src/devmem-full-access/devmem-full-access.ko ]; then
+    make -C /home/src/devmem-full-access || exit 1
+fi
+
+if [ ! -d /sys/module/devmem-full-access ]; then
+    sudo insmod /home/src/devmem-full-access/devmem-full-access.ko || exit 1
+fi

@@ -1,1 +1,1 @@
-git python python-lxml acpica-tools linux-headers-amd64 make
+git python python-lxml acpica-tools linux-headers-amd64 make lsb-release pastebinit

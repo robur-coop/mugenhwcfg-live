@@ -1,0 +1,9 @@
+#!/bin/sh
+
+sb=`tput smso` eb=`tput rmso`
+
+if [ -f /home/src/mugenhwcfg/output.xml ]; then
+    url="$(pastebinit -a mugenhwcfg -i /home/src/mugenhwcfg/output.xml)"
+    [ $? -ne 0 ] && exit 1
+    echo "${sb}Hardware configuration uploaded to ${url}${eb}"
+fi
